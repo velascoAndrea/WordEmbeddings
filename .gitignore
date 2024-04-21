@@ -1,5 +1,7 @@
 node_modules/
-
+AlgoritmosEmbeddings/Datos
+AlgoritmosEmbeddings/glove
+AlgoritmosEmbeddings/enwiki-20240401-1.txt
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
