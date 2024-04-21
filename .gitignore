@@ -4,6 +4,7 @@ AlgoritmosEmbeddings/glove
 AlgoritmosEmbeddings/enwiki-20240401-1.txt
 SistemaQ&A/embedings.csv
 SistemaQ&A/processed.csv
+
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
