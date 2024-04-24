@@ -1,44 +1,38 @@
 import numpy as np
+from gensim.models import KeyedVectors
 from scipy.spatial.distance import cosine
 
-# Función para cargar los embeddings de GloVe desde un archivo
-def load_glove_model(glove_file_path):
-    print("Cargando GloVe Model")
-    with open(glove_file_path, 'r', encoding='utf8') as f:
-        model = {}
-        for line in f:
-            split_line = line.split()
-            word = split_line[0]
-            embedding = np.array([float(val) for val in split_line[1:]])
-            model[word] = embedding
-        print(f"Modelo cargado. Se cargaron {len(model)} palabras.")
+# Función para cargar el modelo de FastText
+def load_fasttext_model(fasttext_file_path):
+    print("Cargando modelo de FastText")
+    model = KeyedVectors.load(fasttext_file_path)
+    print(f"Modelo cargado. Se cargaron {len(model.key_to_index)} palabras.")
     return model
 
 # Función para encontrar el vector más cercano (utilizado para analogías)
-def find_closest_embeddings(embedding, embeddings_matrix, exclude_words=[]):
-    return sorted(embeddings_matrix.keys(), key=lambda word: cosine(embeddings_matrix[word], embedding) if word not in exclude_words else 2)
+def find_closest_embeddings(embedding, embeddings_model, exclude_words=[]):
+    return sorted(embeddings_model.key_to_index.keys(), key=lambda word: cosine(embeddings_model[word], embedding) if word not in exclude_words else 2)
 
 # Función para realizar analogías de la forma a es a b como c es a __
-def analogy(a, b, c, embeddings_matrix):
+def analogy(a, b, c, embeddings_model):
     a, b, c = a.lower(), b.lower(), c.lower()
     # Encontramos los vectores para cada palabra
-    closest_words = find_closest_embeddings(embeddings_matrix[b] - embeddings_matrix[a] + embeddings_matrix[c], embeddings_matrix, exclude_words=[a, b, c])
+    closest_words = find_closest_embeddings(embeddings_model[b] - embeddings_model[a] + embeddings_model[c], embeddings_model, exclude_words=[a, b, c])
     # Excluimos las palabras originales y devolvemos la más cercana
     return closest_words[0]
 
 # Función para encontrar vecinos cercanos de una palabra
-def nearest_neighbors(word, embeddings_matrix, n=5):
+def nearest_neighbors(word, embeddings_model, n=5):
     word = word.lower()
-    nearest = sorted(embeddings_matrix.keys(), key=lambda x: cosine(embeddings_matrix[x], embeddings_matrix[word]))
+    nearest = sorted(embeddings_model.key_to_index.keys(), key=lambda x: cosine(embeddings_model[x], embeddings_model[word]))
     nearest = [x for x in nearest if x != word]
     return nearest[:n]
 
-# Carga el modelo de GloVe desde el archivo
-glove_path = './glove/glove.6B.50d.txt' # Cambia esto por la ruta de tu archivo de GloVe
-embeddings = load_glove_model(glove_path)
+# Carga el modelo de FastText desde el archivo
+fasttext_path = './/home/escar/Descargas/glove/cc.en.300.vec' 
+embeddings = load_fasttext_model(fasttext_path)
 
-# Analiza analogías
-#print("Analogía: rey es a reina como hombre es a __")
+# Ejemplo de analogías
 print("king is to man as queen is to  ->",analogy('king', 'man', 'queen', embeddings))
 print("France is to Paris as london is to ->", analogy('france', 'paris', 'london', embeddings))
 print("France is to Paris as rome is to ->", analogy('france', 'paris', 'rome', embeddings))
@@ -63,7 +57,5 @@ print("France is to Paris as tokyo is to ->", analogy('france', 'paris', 'tokyo'
 print("France is to Paris as beijing is to ->", analogy('france', 'paris', 'beijing', embeddings))
 print("February is to January as november is to ->", analogy('february', 'january', 'november', embeddings))
 print("Paris is to France as italy is to ->", analogy('paris', 'france', 'italy', embeddings))
-
-
-print("Vecinos cercanos de 'python':")
-#print(nearest_neighbors('king', embeddings))
+# Ejemplo de vecinos cercanos
+#print("Vecinos cercanos de 'king':", nearest_neighbors('king', embeddings))

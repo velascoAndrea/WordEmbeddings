@@ -6,7 +6,7 @@ from scipy.spatial.distance import cosine
 # Función para cargar el modelo Word2Vec desde un archivo
 def load_word2vec_model(word2vec_file_path):
     print("Cargando Word2Vec Model")
-    model = KeyedVectors.load_word2vec_format(word2vec_file_path, binary=False)  # Cambiar a True si es binario
+    model = KeyedVectors.load_word2vec_format(word2vec_file_path, binary=True)  # Cambiar a True si es binario
     print(f"Modelo cargado. Se cargaron {len(model.key_to_index)} palabras.")
     return model
 
@@ -31,12 +31,36 @@ def nearest_neighbors(word, embeddings_model, n=5):
     return nearest[:n]
 
 # Carga el modelo de Word2Vec desde el archivo
-word2vec_path = './word2vec/GoogleNews-vectors-negative300.bin'  # Cambia esto por la ruta de tu archivo de Word2Vec
+word2vec_path = '/home/escar/Descargas/glove/GoogleNews-vectors-negative300.bin'  # Cambia esto por la ruta de tu archivo de Word2Vec
 embeddings = load_word2vec_model(word2vec_path)
 
 # Analiza analogías
-print("Analogía: king is to queen as man is to __")
+#print("Analogía: king is to queen as man is to __")
 print(analogy('king', 'queen', 'man', embeddings))
+print(analogy('france', 'paris', 'london', embeddings))
+print(analogy('france', 'paris', 'rome', embeddings))
+print(analogy('paris', 'france', 'italy', embeddings))
+print(analogy('france', 'french', 'english', embeddings))
+print(analogy('japan', 'japanese', 'chinese', embeddings))
+print(analogy('japan', 'japanese', 'italian', embeddings))
+print(analogy('japan', 'japanese', 'australian', embeddings))
+print(analogy('december', 'november', 'june', embeddings))
+print(analogy('miami', 'florida', 'texas', embeddings))
+print(analogy('einstein', 'scientist', 'painter', embeddings))
+print(analogy('china', 'rice', 'bread', embeddings))
+print(analogy('man', 'woman', 'she', embeddings))
+print(analogy('man', 'woman', 'aunt', embeddings))
+print(analogy('man', 'woman', 'sister', embeddings))
+print(analogy('man', 'woman', 'wife', embeddings))
+print(analogy('man', 'woman', 'actress', embeddings))
+print(analogy('man', 'woman', 'mother', embeddings))
+print(analogy('heir', 'heiress', 'princess', embeddings))
+print(analogy('nephew', 'niece', 'aunt', embeddings))
+print(analogy('france', 'paris', 'tokyo', embeddings))
+print(analogy('france', 'paris', 'beijing', embeddings))
+print(analogy('february', 'january', 'november', embeddings))
+print(analogy('france', 'paris', 'rome', embeddings))
+print(analogy('paris', 'france', 'italy', embeddings))
 
 # Encuentra vecinos cercanos
 print("Vecinos cercanos de 'king':")
