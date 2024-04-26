@@ -1,27 +1,33 @@
 import openai
 from dotenv import load_dotenv
 import os
+import numpy as np
+from scipy.spatial.distance import cosine
 
-# Acceder a la clave de API desde la variable de entorno
-api_key = os.getenv('OPENAI_API_KEY')
+# Carga la configuración del archivo .env
+load_dotenv()
 
-if api_key is None:
-    raise ValueError("API key no encontrada. Asegúrate de que la variable de entorno OPENAI_API_KEY esté configurada correctamente en el archivo .env.")
+# Establece la clave API desde la variable de entorno
+openai.api_key = os.getenv("OPENAI_API_KEY")
 
-openai.api_key = api_key
-
-def gpt3_analogy(a, b, c):
-    prompt = f"{a} is to {b} as {c} is to"
+def solve_analogy(a, b, c):
+    """Resuelve analogías utilizando GPT-3, intentando devolver solo una palabra."""
+    prompt = f"solve this analogy with the embedding closest to the word is to say if '{a}' is '{b}', what is '{c}'? excluding the words '{a}' '{b}' and '{c}'"
     response = openai.Completion.create(
-        engine="text-davinci-002",  # Asegúrate de elegir el engine correcto
+        engine="text-embedding-ada-002",  # Usar el modelo más adecuado disponible
         prompt=prompt,
-        max_tokens=50
+        max_tokens=1,  # Limitar a solo un token de salida
+        n=1,  # Una sola respuesta
+        stop=["\n", "."],  # Detiene la generación en el primer espacio o punto
+        temperature=0.3,  # Baja temperatura para respuestas más predecibles
+        top_p=1.0  # Usar el modo núcleo para una respuesta más enfocada
     )
     return response.choices[0].text.strip()
 
-# Ejemplo de uso de la función de analogía con GPT-3
-a = 'king'
-b = 'man'
-c = 'queen'
-result = gpt3_analogy(a, b, c)
+# Ejemplo de uso de la función de analogía
+a = 'france'
+b = 'paris'
+c = 'londom'
+result = solve_analogy(a, b, c)
 print(f"{a} is to {b} as {c} is to {result}")
+

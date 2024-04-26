@@ -22,7 +22,7 @@ def find_closest_embeddings(embedding, embeddings_matrix, exclude_words=[]):
 def analogy(a, b, c, embeddings_matrix):
     a, b, c = a.lower(), b.lower(), c.lower()
     # Encontramos los vectores para cada palabra
-    closest_words = find_closest_embeddings(embeddings_matrix[b] - embeddings_matrix[a] + embeddings_matrix[c], embeddings_matrix, exclude_words=[a, b, c])
+    closest_words = find_closest_embeddings(embeddings_matrix[a] - embeddings_matrix[b]  + embeddings_matrix[c], embeddings_matrix, exclude_words=[a, b, c])
     # Excluimos las palabras originales y devolvemos la más cercana
     return closest_words[0]
 
@@ -34,11 +34,10 @@ def nearest_neighbors(word, embeddings_matrix, n=5):
     return nearest[:n]
 
 # Carga el modelo de GloVe desde el archivo
-glove_path = './glove/glove.6B.50d.txt' # Cambia esto por la ruta de tu archivo de GloVe
+glove_path = '/media/escar/Escarleth/DatosEmbeddings/glove.6B/glove.6B.50d.txt' # Cambia esto por la ruta de tu archivo de GloVe
 embeddings = load_glove_model(glove_path)
 
 # Analiza analogías
-#print("Analogía: rey es a reina como hombre es a __")
 print("king is to man as queen is to  ->",analogy('king', 'man', 'queen', embeddings))
 print("France is to Paris as london is to ->", analogy('france', 'paris', 'london', embeddings))
 print("France is to Paris as rome is to ->", analogy('france', 'paris', 'rome', embeddings))
