@@ -8,6 +8,8 @@ numpy = "*"
 scipy = "*"
 scikit-learn = "*"
 future = "*"
+openai = "==0.28"
+fasttext = "*"
 
 [dev-packages]
 
