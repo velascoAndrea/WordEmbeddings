@@ -64,5 +64,38 @@ print("February is to January as november is to ->", analogy('february', 'januar
 print("Paris is to France as italy is to ->", analogy('paris', 'france', 'italy', embeddings))
 
 
-print("Vecinos cercanos de 'python':")
-#print(nearest_neighbors('king', embeddings))
+print("Vecinos cercanos")
+print("Vecinos cercanos de king",nearest_neighbors('king',embeddings))
+print("Vecinos cercanos de france",nearest_neighbors('france',embeddings))
+print("Vecinos cercanos de japan",nearest_neighbors('japan',embeddings))
+print("Vecinos cercanos de einstein",nearest_neighbors('einstein',embeddings))
+print("Vecinos cercanos de woman",nearest_neighbors('woman',embeddings))
+print("Vecinos cercanos de nephew",nearest_neighbors('nephew',embeddings))
+print("Vecinos cercanos de february",nearest_neighbors('february',embeddings))
+print("Vecinos cercanos de rome",nearest_neighbors('rome',embeddings))
+print("Vecinos cercanos de italy",nearest_neighbors('italy',embeddings))
+print("Vecinos cercanos de he",nearest_neighbors('he',embeddings))
+print("Vecinos cercanos de she",nearest_neighbors('she',embeddings))
+print("Vecinos cercanos de january",nearest_neighbors('january',embeddings))
+print("Vecinos cercanos de queen",nearest_neighbors('queen',embeddings))
+print("Vecinos cercanos de china",nearest_neighbors('china',embeddings))
+print("Vecinos cercanos de tree",nearest_neighbors('tree',embeddings))
+print("Vecinos cercanos de car",nearest_neighbors('car',embeddings))
+print("Vecinos cercanos de hapiness",nearest_neighbors('happiness',embeddings))
+print("Vecinos cercanos de technology",nearest_neighbors('technology',embeddings))
+print("Vecinos cercanos de beautiful",nearest_neighbors('beautiful',embeddings))
+print("Vecinos cercanos de dangerous",nearest_neighbors('dangerous',embeddings))
+print("Vecinos cercanos de quiet",nearest_neighbors('quiet',embeddings))
+print("Vecinos cercanos de amazon",nearest_neighbors('amazon',embeddings))
+print("Vecinos cercanos de algorithm",nearest_neighbors('algorithm',embeddings))
+print("Vecinos cercanos de bank",nearest_neighbors('bank',embeddings))
+print("Vecinos cercanos de people",nearest_neighbors('people',embeddings))
+
+
+
+
+
+
+
+
+
