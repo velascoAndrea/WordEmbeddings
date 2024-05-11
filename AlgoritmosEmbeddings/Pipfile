@@ -10,6 +10,7 @@ scikit-learn = "*"
 future = "*"
 openai = "==0.28"
 fasttext = "*"
+gensim = "*"
 
 [dev-packages]
 
