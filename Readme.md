@@ -53,13 +53,25 @@ Si Python no está instalado o deseas instalar Python 3.8, sigue estos pasos seg
 ### macOS
 
 1. Puedes instalar Python 3.8 usando Homebrew (un gestor de paquetes para macOS). Si no tienes Homebrew, puedes instalarlo desde [brew.sh.](https://brew.sh/)
-2. Abre una terminal y ejecuta: ```bash brew install python@3.8```
-3. Asegúrate de que la versión correcta está configurada por defecto: ```bash brew link python@3.8 --force```
+2. Abre una terminal y ejecuta: 
+```bash 
+brew install python@3.8
+```
+3. Asegúrate de que la versión correcta está configurada por defecto: 
+```bash 
+brew link python@3.8 --force
+```
 
 ### Linux
 
-1. La mayoría de las distribuciones de Linux permiten instalar Python directamente desde el repositorio de paquetes de la distribución. Por ejemplo, en Ubuntu puedes usar: ```bash sudo apt update sudo apt install python3.8```
-2. Verifica la instalación ejecutando:  ```bash python3.8 --version```
+1. La mayoría de las distribuciones de Linux permiten instalar Python directamente desde el repositorio de paquetes de la distribución. Por ejemplo, en Ubuntu puedes usar: 
+```bash 
+sudo apt update sudo apt install python3.8
+```
+2. Verifica la instalación ejecutando:  
+```bash 
+python3.8 --version
+```
 
 ## Instalación de `pipenv`
 
