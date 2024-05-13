@@ -3,9 +3,11 @@ AlgoritmosEmbeddings/Datos
 AlgoritmosEmbeddings/glove
 AlgoritmosEmbeddings/wor2vec
 AlgoritmosEmbeddings/enwiki-20240401-1.txt
-SistemaQ&A/embedings.csv
-SistemaQ&A/processed.csv
-
+SistemaQyA/embedings.csv
+SistemaQyA/processed.csv
+SistemaQyA/ArchivosWiki
+SistemaQyA/ArchivosWikiXML
+SistemaQyA/ResultEmbeddings
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
