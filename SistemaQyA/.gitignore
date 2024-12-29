@@ -1,6 +1,8 @@
 SistemaQ&A/node_modules/
 embedings.csv
 processed.csv
+/node_modules
+/ModelosEmbeddings
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
