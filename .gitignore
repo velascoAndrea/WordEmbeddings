@@ -8,6 +8,7 @@ SistemaQyA/processed.csv
 SistemaQyA/ArchivosWiki
 SistemaQyA/ArchivosWikiXML
 SistemaQyA/ResultEmbeddings
+SistemaQyA/ProcessGPT
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
